@@ -1,5 +1,7 @@
 package com.llp.amm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.llp.amm.enums.Profile;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,8 +26,12 @@ public class User {
     private String username;
     @ManyToOne
     @JoinColumn(name = "department_id")
+    @JsonIgnore
     private Department department;
     @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "profile")
+    private Profile profile;
 }

@@ -1,0 +1,20 @@
+meta {
+  name: addUser
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/api/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name":"ppq",
+    "departmentId":1,
+    "sector": 1,
+    "profile":1
+  }
+}
