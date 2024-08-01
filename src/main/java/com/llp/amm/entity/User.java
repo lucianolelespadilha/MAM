@@ -22,15 +22,19 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "user_name")
-    private String username;
+    private String userName;
+
     @ManyToOne
     @JoinColumn(name = "department_id")
     @JsonIgnore
     private Department department;
+    
     @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "profile")
     private Profile profile;

@@ -6,7 +6,7 @@ import org.springframework.web.client.HttpServerErrorException;
 
 public class AmmException extends RuntimeException {
 
-    public AmmException(String s) {
+    public AmmException(Long s) {
     }
 
     public ProblemDetail toProblemDetail() {

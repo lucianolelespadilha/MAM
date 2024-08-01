@@ -6,7 +6,7 @@ import org.springframework.http.ProblemDetail;
 public class DepartmentAlreadyExistsException extends AmmException{
 
     public DepartmentAlreadyExistsException(String name) {
-        super("Department Already Exists");
+        super(2L);
     }
 
     @Override
