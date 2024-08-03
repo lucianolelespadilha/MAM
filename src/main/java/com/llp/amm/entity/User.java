@@ -30,7 +30,7 @@ public class User {
     @JoinColumn(name = "department_id")
     @JsonIgnore
     private Department department;
-    
+
     @ManyToOne
     @JoinColumn(name = "sector_id")
     private Sector sector;
