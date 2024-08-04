@@ -18,4 +18,10 @@ public record SectorDto(
 
     }
 
+    public static SectorDto fromEntity(Sector sector) {
+
+        return new SectorDto(sector.getName(), sector.getDepartment().getId());
+    }
+
+
 }

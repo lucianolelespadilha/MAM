@@ -5,7 +5,16 @@ meta {
 }
 
 put {
-  url: http://localhost:8080/api/users/11
-  body: none
+  url: http://localhost:8080/api/users/5
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "userName": "Luciano Leles Padilha",
+    "departmentId": 5,
+    "sectorId": 8,
+    "profile": "ADMIN"
+  }
 }

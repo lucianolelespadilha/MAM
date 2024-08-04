@@ -24,7 +24,7 @@ public class Department {
     private String name;
     @OneToMany(mappedBy = "department")
     private Set<User> user;
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Sector> sector;
 
 

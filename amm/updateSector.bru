@@ -1,0 +1,17 @@
+meta {
+  name: updateSector
+  type: http
+  seq: 15
+}
+
+put {
+  url: http://localhost:8080/api/sectors/8
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name":"Caldeiraria"
+  }
+}
