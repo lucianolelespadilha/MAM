@@ -1,7 +1,7 @@
 package com.llp.amm.service;
 
 
-import com.llp.amm.dto.UserDto;
+import com.llp.amm.dtos.UserDto;
 import com.llp.amm.entity.Department;
 import com.llp.amm.entity.Sector;
 import com.llp.amm.entity.User;

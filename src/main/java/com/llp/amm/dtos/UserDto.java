@@ -1,4 +1,4 @@
-package com.llp.amm.dto;
+package com.llp.amm.dtos;
 
 import com.llp.amm.entity.Department;
 import com.llp.amm.entity.Sector;

@@ -1,11 +1,8 @@
 package com.llp.amm.controller;
 
 
-import com.llp.amm.dto.DepartmentDto;
-import com.llp.amm.dto.UserDto;
+import com.llp.amm.dtos.DepartmentDto;
 import com.llp.amm.entity.Department;
-import com.llp.amm.entity.Sector;
-import com.llp.amm.entity.User;
 import com.llp.amm.service.DepartmentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

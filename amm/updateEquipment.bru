@@ -1,0 +1,20 @@
+meta {
+  name: updateEquipment
+  type: http
+  seq: 20
+}
+
+put {
+  url: http://localhost:8080/api/equipments/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    
+  "name":"Bomba Nemu Decantador",
+  "departmentId": 5,
+  "sectorId": 8
+  }
+}

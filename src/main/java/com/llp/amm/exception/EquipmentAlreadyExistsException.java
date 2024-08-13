@@ -3,19 +3,20 @@ package com.llp.amm.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 
-
-public class DepartmentNotRegistered extends AmmException{
-
-
-    public DepartmentNotRegistered() {
-        super(1L);
+public class EquipmentAlreadyExistsException extends AmmException {
+    public EquipmentAlreadyExistsException(Long s) {
+        super(s);
     }
+
+
 
     @Override
     public ProblemDetail toProblemDetail() {
+
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
-        pb.setTitle("Department not registered");
-        pb.setDetail("This department is not registered");
+
+        pb.setTitle("Equipmente Already Exists");
+
         return pb;
     }
 }

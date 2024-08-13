@@ -1,12 +1,10 @@
 package com.llp.amm.service;
 
-import com.llp.amm.dto.DepartmentDto;
+import com.llp.amm.dtos.DepartmentDto;
 import com.llp.amm.entity.Department;
 import com.llp.amm.entity.Sector;
-import com.llp.amm.entity.User;
 import com.llp.amm.exception.DepartmentAlreadyExistsException;
 import com.llp.amm.exception.DepartmentNotFoundException;
-import com.llp.amm.exception.UserNotFoundException;
 import com.llp.amm.repository.DepartmentRepository;
 import com.llp.amm.repository.SectorRepository;
 import com.llp.amm.repository.UserRepository;
@@ -75,5 +73,4 @@ public class DepartmentService {
     }
 
 
-    }
-
+}

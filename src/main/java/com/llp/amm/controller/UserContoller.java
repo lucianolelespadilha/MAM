@@ -1,7 +1,7 @@
 package com.llp.amm.controller;
 
 
-import com.llp.amm.dto.UserDto;
+import com.llp.amm.dtos.UserDto;
 import com.llp.amm.entity.User;
 import com.llp.amm.service.UserService;
 import jakarta.validation.Valid;

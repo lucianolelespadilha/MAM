@@ -1,7 +1,6 @@
 package com.llp.amm.service;
 
-import com.llp.amm.dto.DepartmentDto;
-import com.llp.amm.dto.SectorDto;
+import com.llp.amm.dtos.SectorDto;
 import com.llp.amm.entity.Department;
 import com.llp.amm.entity.Sector;
 import com.llp.amm.entity.User;
@@ -27,7 +26,7 @@ public class SectorService {
     public Sector addSector(SectorDto sectorDto) {
 
         Department department = departmentRepository.findById(sectorDto.departmentId())
-                .orElseThrow(() -> new DepartmentNotRegistered());
+                .orElseThrow(() -> new DepartmentNotFoundException(sectorDto.departmentId()));
 
         if (sectorRepository.existsByName(sectorDto.name())) {
             throw new SectorAlreadyExistsException(sectorDto.name());
@@ -70,4 +69,3 @@ public class SectorService {
         return sectorRepository.save(existingSector);
     }
 }
-

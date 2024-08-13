@@ -1,0 +1,19 @@
+meta {
+  name: addEquipment
+  type: http
+  seq: 16
+}
+
+post {
+  url: http://localhost:8080/api/equipments
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name":"Bomba do tanque de lodo",
+    "departmentId" : 6,
+    "sectorId":13
+  }
+}
