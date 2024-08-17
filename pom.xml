@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.llp</groupId>
-    <artifactId>amm</artifactId>
+    <artifactId>MAM</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>AMM</name>
     <description>API de Gestão de Anomalias de Manutenção</description>
