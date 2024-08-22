@@ -1,0 +1,21 @@
+meta {
+  name: addAnomaly
+  type: http
+  seq: 21
+}
+
+post {
+  url: http://localhost:8080/api/anomalies
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": 5,
+    "equipmentId": 1,
+    "description":"Tubulação perto da bomba de lodo apresenta vazamento",
+    "priority": "HIGH",
+    "department":"CALDEIRARIA"
+  }
+}

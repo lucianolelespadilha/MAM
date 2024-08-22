@@ -56,7 +56,7 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    @Autowired
+    
     public UserService(UserRepository userRepository, DepartmentRepository departmentRepository, SectorRepository sectorRepository) {
         this.userRepository = userRepository;
         this.departmentRepository = departmentRepository;

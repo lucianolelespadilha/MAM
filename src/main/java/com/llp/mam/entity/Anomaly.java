@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "anomalies")
@@ -41,9 +41,9 @@ public class Anomaly {
     @NotNull
     private Priority priority;
 
-    @Temporal(TemporalType.TIMESTAMP)
+
     @Column(nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
