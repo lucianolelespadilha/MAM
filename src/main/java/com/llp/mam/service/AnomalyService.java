@@ -1,10 +1,10 @@
 package com.llp.mam.service;
 
 import com.llp.mam.dtos.AnomalyDto;
-import com.llp.mam.dtos.EquipmentDto;
 import com.llp.mam.entity.Anomaly;
 import com.llp.mam.entity.Equipment;
 import com.llp.mam.entity.User;
+import com.llp.mam.exception.DuplicateAnomalyException;
 import com.llp.mam.exception.EquipmentNotFoundException;
 import com.llp.mam.exception.UserNotFoundException;
 import com.llp.mam.repository.AnomalyRepository;
@@ -28,15 +28,24 @@ public class AnomalyService {
 
     public AnomalyDto addAnomaly(AnomalyDto anomalyDto) {
 
+        LocalDate anomalyDate = anomalyDto.date() != null ? anomalyDto.date() : LocalDate.now();
+
         User user = userRepository.findById(anomalyDto.userId())
                 .orElseThrow(() -> new UserNotFoundException(anomalyDto.userId()));
 
         Equipment equipment = equipmentRepository.findById(anomalyDto.equipmentId())
                 .orElseThrow(() -> new EquipmentNotFoundException(anomalyDto.equipmentId()));
 
-        Anomaly anomaly = anomalyDto.toEntity(user, equipment);
 
-        anomaly.setDate(LocalDate.now());
+        boolean exists = anomalyRepository.existsByDescriptionAndEquipmentAndDate(
+                anomalyDto.description().trim().toLowerCase(), equipment, anomalyDate);
+
+        if (exists) {
+            throw new DuplicateAnomalyException(anomalyDto.equipmentId());
+        }
+
+        Anomaly anomaly = anomalyDto.toEntity(user, equipment);
+        anomaly.setDate(anomalyDate);
         anomaly = anomalyRepository.save(anomaly);
 
         return AnomalyDto.fromEntity(anomaly);

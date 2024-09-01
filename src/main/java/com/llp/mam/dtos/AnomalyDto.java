@@ -31,7 +31,7 @@ public record AnomalyDto(
 ) {
     public static AnomalyDto fromEntity(Anomaly anomaly) {
         return new AnomalyDto(
-                anomaly.getId(),
+                anomaly.getAnomalyId(),
                 anomaly.getUser().getId(),
                 anomaly.getUser().getUserName(),
                 anomaly.getEquipment().getTag(),
@@ -44,12 +44,11 @@ public record AnomalyDto(
 
     public Anomaly toEntity(User user, Equipment equipment) {
         Anomaly anomaly= new Anomaly();
-        anomaly.setId(this.userId);
         anomaly.setUser(user);
         anomaly.setEquipment(equipment);
         anomaly.setDescription(this.description);
         anomaly.setPriority(this.priority);
-        anomaly.setDate(this.date);
+        anomaly.setDate(date);
         anomaly.setDepResponsible(this.department);
 
         return anomaly;
