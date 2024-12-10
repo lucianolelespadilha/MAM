@@ -30,7 +30,7 @@ public class AnomalyController {
         AnomalyDto savedAnomalyDto = anomalyService.addAnomaly(anomalyDto);
         return ResponseEntity.ok(savedAnomalyDto);
     }
-    
+
     @GetMapping("/{anomalyId}")
     public ResponseEntity<AnomalyDto>getAnomalyById(@PathVariable Long anomalyId){
             return ResponseEntity.ok(anomalyService.getAnomalyById(anomalyId));
@@ -50,6 +50,12 @@ public class AnomalyController {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping("/{id}")
+    public  ResponseEntity<AnomalyDto> updateAnomaly(@PathVariable Long id, @RequestBody @Valid AnomalyDto anomalyDto){
+        AnomalyDto  updateAnomaly = anomalyService.upDateAnomaly(id, anomalyDto);
+        return ResponseEntity.ok(updateAnomaly);
+    }
+    //PRECISO TESTAR A FUNCIONALIDADE DE UPDATEANOMALY
 
 
 }

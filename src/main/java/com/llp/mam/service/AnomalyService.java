@@ -1,6 +1,7 @@
 package com.llp.mam.service;
 
 import com.llp.mam.dtos.AnomalyDto;
+import com.llp.mam.dtos.EquipmentDto;
 import com.llp.mam.entity.Anomaly;
 import com.llp.mam.entity.Equipment;
 import com.llp.mam.entity.User;
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -78,5 +78,27 @@ public class AnomalyService {
                 .orElseThrow(() -> new AnomalyNotFoundException(anomalyId));
 
         anomalyRepository.delete(anomaly);
+    }
+
+    public AnomalyDto upDateAnomaly(Long anomalyId, AnomalyDto anomalyDto){
+
+        Anomaly anomaly = anomalyRepository.findById(anomalyId)
+                .orElseThrow(() -> new AnomalyNotFoundException(anomalyId));
+
+        User user = userRepository.findById(anomalyDto.userId())
+                        .orElseThrow(() -> new UserNotFoundException(anomalyDto.userId()));
+
+        Equipment equipment = equipmentRepository.findById(anomalyDto.equipmentId())
+                .orElseThrow(()-> new EquipmentNotFoundException(anomalyDto.equipmentId()));
+
+        anomaly.setDescription(anomalyDto.description());
+        anomaly.setPriority(anomalyDto.priority());
+        anomaly.setDepResponsible(anomalyDto.department());
+        anomaly.setEquipment(equipment);
+        anomaly.setUser(user);
+        
+        Anomaly updateAnomaly = anomalyRepository.save(anomaly);
+
+        return AnomalyDto.fromEntity(updateAnomaly);
     }
 }
