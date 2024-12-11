@@ -5,9 +5,6 @@ import org.springframework.http.ProblemDetail;
 
 public class CustomHttpMessageNotReadableException extends AmmException {
 
-    public CustomHttpMessageNotReadableException(){
-        super(3L);
-    }
 
     @Override
     public ProblemDetail toProblemDetail() {

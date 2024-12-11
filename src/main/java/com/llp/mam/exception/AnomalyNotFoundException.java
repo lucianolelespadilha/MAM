@@ -4,8 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 
 public class AnomalyNotFoundException  extends AmmException{
-    public AnomalyNotFoundException(Long s) {
-        super(2L);
+
+    private Long detail;
+
+    public AnomalyNotFoundException(Long detail) {
+        this.detail = detail;
     }
 
     @Override
@@ -13,7 +16,7 @@ public class AnomalyNotFoundException  extends AmmException{
 
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
         pb.setTitle("Anomaly does not exist");
-        pb.setDetail("Anomaly not registered");
+        pb.setDetail(String.valueOf(detail));
 
         return pb;
     }

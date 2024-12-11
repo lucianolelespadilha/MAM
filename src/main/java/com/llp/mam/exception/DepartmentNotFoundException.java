@@ -4,8 +4,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 
 public class DepartmentNotFoundException extends AmmException{
-    public DepartmentNotFoundException(Long s) {
-        super(1L);
+
+
+    private Long detail;
+
+    public DepartmentNotFoundException(Long detail) {
+        this.detail = detail;
     }
 
     @Override
@@ -13,7 +17,8 @@ public class DepartmentNotFoundException extends AmmException{
 
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
         pb.setTitle("Department does not exist");
-        pb.setDetail("Department not registered");
+        pb.setDetail(String.valueOf(detail));
+
         return pb;
     }
 }

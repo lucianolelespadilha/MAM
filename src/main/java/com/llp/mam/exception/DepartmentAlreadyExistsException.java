@@ -5,8 +5,10 @@ import org.springframework.http.ProblemDetail;
 
 public class DepartmentAlreadyExistsException extends AmmException{
 
-    public DepartmentAlreadyExistsException(String name) {
-        super(2L);
+    private String detail;
+
+    public DepartmentAlreadyExistsException(String detail) {
+        this.detail = detail;
     }
 
     @Override
@@ -14,6 +16,7 @@ public class DepartmentAlreadyExistsException extends AmmException{
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
 
         pb.setTitle("Department Already Exists");
+        pb.setDetail(detail);
 
 
         return pb;

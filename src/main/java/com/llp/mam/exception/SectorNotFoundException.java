@@ -4,8 +4,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 
 public class SectorNotFoundException extends AmmException {
-    public SectorNotFoundException(Long s) {
-        super(2L);
+    private Long detail;
+
+    public SectorNotFoundException(Long detail) {
+        this.detail = detail;
     }
 
     @Override
@@ -13,7 +15,7 @@ public class SectorNotFoundException extends AmmException {
 
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
         pb.setTitle("Sector does not exist");
-        pb.setDetail("Sector not registered");
+        pb.setDetail(String.valueOf(detail));
         return pb;
     }
 }

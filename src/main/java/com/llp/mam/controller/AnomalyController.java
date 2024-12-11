@@ -55,7 +55,5 @@ public class AnomalyController {
         AnomalyDto  updateAnomaly = anomalyService.upDateAnomaly(id, anomalyDto);
         return ResponseEntity.ok(updateAnomaly);
     }
-    //PRECISO TESTAR A FUNCIONALIDADE DE UPDATEANOMALY
-
 
 }

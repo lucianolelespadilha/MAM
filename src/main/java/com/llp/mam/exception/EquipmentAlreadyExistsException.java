@@ -4,8 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 
 public class EquipmentAlreadyExistsException extends AmmException {
-    public EquipmentAlreadyExistsException(Long s) {
-        super(s);
+
+    private Long detail;
+
+    public EquipmentAlreadyExistsException(Long detail) {
+        this.detail = detail;
     }
 
 
@@ -16,6 +19,7 @@ public class EquipmentAlreadyExistsException extends AmmException {
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
 
         pb.setTitle("Equipmente Already Exists");
+        pb.setDetail(String.valueOf(detail));
 
         return pb;
     }

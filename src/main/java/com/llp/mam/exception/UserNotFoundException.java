@@ -4,8 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 
 public class UserNotFoundException extends AmmException{
-    public UserNotFoundException(Long s) {
-        super(3L);
+
+    private Long detail;
+
+    public UserNotFoundException(Long detail) {
+        this.detail = detail;
     }
 
     @Override
@@ -13,6 +16,7 @@ public class UserNotFoundException extends AmmException{
 
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
         pb.setTitle("User does not exist");
+        pb.setDetail(String.valueOf(detail));
 
         return pb;
     }

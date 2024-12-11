@@ -1,0 +1,25 @@
+meta {
+  name: updateAnomaly
+  type: http
+  seq: 24
+}
+
+put {
+  url: http://localhost:8080/api/anomalies/1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "anomalyId": 1,
+      "userId": 5,
+      "userName": "Luciano Leles Padilha",
+      "equipmentId": 1,
+      "description": "Vazamanto na valvula ",
+      "priority": "HIGH",
+      "date": "2024-08-21",
+      "department": "MECANICA"
+    }
+  
+}

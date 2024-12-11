@@ -5,8 +5,10 @@ import org.springframework.http.ProblemDetail;
 
 public class SectorAlreadyExistsException extends AmmException{
 
-    public SectorAlreadyExistsException(String name) {
-        super(2L);
+    private String detail;
+
+    public SectorAlreadyExistsException(String detail) {
+        this.detail = detail;
     }
 
     @Override
@@ -14,6 +16,7 @@ public class SectorAlreadyExistsException extends AmmException{
         var pb = ProblemDetail.forStatus(HttpStatus.UNPROCESSABLE_ENTITY);
 
         pb.setTitle("Sector Already Exists");
+        pb.setDetail(detail);
 
         return pb;
     }
