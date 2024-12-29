@@ -25,6 +25,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
+    private final AuthenticationService passwordService;
+    @Autowired
     private DepartmentRepository departmentRepository;
     @Autowired
     private SectorRepository sectorRepository;
@@ -43,6 +45,7 @@ public class UserService {
                 .orElseThrow(() -> new SectorNotFoundException(userDto.sectorId()));
 
         User user = userDto.toEntity(department, sector);
+
         return userRepository.save(user);
 
     }
@@ -57,10 +60,12 @@ public class UserService {
     }
 
     
-    public UserService(UserRepository userRepository, DepartmentRepository departmentRepository, SectorRepository sectorRepository) {
+    public UserService(UserRepository userRepository, AuthenticationService passwordService, DepartmentRepository departmentRepository, SectorRepository sectorRepository) {
         this.userRepository = userRepository;
+        this.passwordService = passwordService;
         this.departmentRepository = departmentRepository;
         this.sectorRepository = sectorRepository;
+
     }
 
 

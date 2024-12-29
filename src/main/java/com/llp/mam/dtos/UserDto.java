@@ -8,7 +8,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record UserDto(
-        @NotNull Long userId,
+         Long userId,
+        @NotNull String password,
         @NotBlank String userName,
         @NotNull Long departmentId,
         @NotNull Long sectorId,
@@ -28,6 +29,7 @@ public record UserDto(
     public static UserDto fromEntity(User user){
         return new UserDto(
                 user.getId(),
+                null,
                 user.getUserName(),
                 user.getDepartment() .getId(),//!= null? user.getDepartment().getId():null,
                 user.getSector().getId(), //!= null? user.getSector().getId():null,
